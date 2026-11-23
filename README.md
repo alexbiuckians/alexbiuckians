@@ -1,9 +1,17 @@
 # Alex Biuckians | Data Scientist & Machine Learning Portfolio
  
-I am an M.S. Data Science student at George Washington University (May 2027) who builds models on real, messy data and holds every one of them to an honest baseline. My work spans spatial statistics, forecasting under uncertainty, operations research, and the production monitoring that starts after a model ships — and each project reports what it can't prove alongside what it can, rather than a flattering number.
+I am an M.S. Data Science student at George Washington University (May 2027) who builds models on real, messy data and holds every one of them to an honest baseline. My work spans spatial statistics, forecasting under uncertainty, operations research, and the production monitoring that starts after a model ships — and each project reports what it can't prove alongside what it can, rather than a flattering number. In fall 2026 I built a production hotel demand forecast as an intern at RREAF Holdings.
  
 **Portfolio site:** https://alexbiuckians.github.io/AlexBiuckiansPortfolioSite/
  
+## 💼 Professional Experience
+
+**RREAF Holdings** — Fall Intern, Technology (Aug–Nov 2026, Remote)
+
+- **Hotel demand forecasting:** Built a four-notebook pipeline in Microsoft Fabric (PySpark, LightGBM, MLflow) that cleans daily hotel data, backtests LightGBM against three baselines (same day last year, 4-week average, and the budget), and writes a 90-day forecast for 13 properties. LightGBM beat every baseline at every horizon (17–21% WMAPE vs. 24–32%), and the forecast is now live in production. Properties with stale or broken source data were flagged and left out instead of forecast.
+- **Power BI dashboards:** Rebuilt a manual Excel development tracker as an 8-page Power BI dashboard that pulls monthly QuickBooks financials from SharePoint through the REST API, validated to $0 variance on every property. Built 4 more reports covering invoice approvals and institutional capital.
+- *Company code and data aren't public; this is a summary of the work.*
+
 ## 🔬 Featured projects
  
 **[TurnoutLens](https://github.com/alexbiuckians/TurnoutLens)** — U.S. county voter turnout, explained.
@@ -11,17 +19,18 @@ I am an M.S. Data Science student at George Washington University (May 2027) who
 - **Approach:** An R pipeline over 21,789 county-cycle observations from real MIT Election Lab returns and U.S. Census data, with PostgreSQL window functions, tidymodels benchmarking, DALEX explainability, and spatial statistics (Moran's I, LISA) on the model's residuals — served through a live Shiny/Leaflet map.
 - **Outcome:** Demographics alone explain 61% of out-of-sample variance (trained 2000–2020, tested on an unseen 2024), and the residuals cluster at Moran's I = 0.391 (p = 2.2e-290), with LISA clusters naming the same-day-registration states — the model recovers the effect of election law without ever being told it exists. It deliberately drops a lag feature that improves accuracy 19.5% because it masks the demographics and destroys the finding. [Live app](https://alexbiuckians.shinyapps.io/turnoutlens/)
 
-**[RouteCast](https://github.com/alexbiuckians/RouteCast)** — Last-mile delivery dispatch intelligence. 
+**[RouteCast](https://github.com/alexbiuckians/RouteCast)** — Last-mile delivery dispatch intelligence.
+
 - **Approach:** 445,295 real parcel deliveries from Alibaba Cainiao's LaDe dataset, cleaned with a documented audit; three LightGBM quantile models predict P10/P50/P90 delivery time leakage-free by construction, feeding a Hungarian assignment optimizer and a SimPy discrete-event staffing simulation.
 - **Outcome:** Calibrated uncertainty (P90 covers 88.9% against a 90% target), and a decision the model can act on — the optimizer's edge grows with dispatch radius, but staffing the peak hotspot at ~10 couriers cuts average order time 37%, so staffing, not assignment, is the larger operational lever. [Live dashboard](https://alexbiuckians.github.io/RouteCast/dashboard/)
 
-
 **[DriftWatch](https://github.com/alexbiuckians/DriftWatch)** — Production monitoring for a deployed credit-default model.
+
 - **Approach:** Instruments every prediction through FastAPI middleware, detects data drift with KS/PSI statistics, reconciles late-arriving labels to measure performance decay separately, tracks latency at p50/p95/p99, and fires hysteresis-gated alerts with a written runbook and CI.
 - **Outcome:** Under concept drift the model's F2 falls 0.640 → 0.565 and recall collapses 0.88 → 0.62 **while data drift reads just 4%** — a monitor watching only drift reports "all clear" while the model silently misses 4 in 10 defaults. Real UCI data, honest held-out AUC ≈ 0.78. [Live app](https://driftmonitor.streamlit.app/)
 
-  
 ## 📦 Also worth a look
+
 **[Parquet Capital](https://github.com/alexbiuckians/Parquet-Capital)** — Roster valuation engine treating NBA players as financial assets: quantile performance forecasts with coverage-calibrated uncertainty, contract pricing against market comps, and a PuLP cap optimizer. A decision-level backtest on held-out seasons shows Overvalued flags cost ~8.6× more per delivered value point, with robustness checked across a second target and a second model class. 4,860 real player-seasons, 45 tests.
  
 **[SignalText](https://github.com/alexbiuckians/SignalText)** — Dual-model sentiment pipeline over 250k Amazon reviews that reports where a fine-tuned transformer and a zero-shot LLM *disagree*, since that's where automated scoring is least trustworthy. The zero-shot model wins 95.6% vs 90.4% — and the weaker model is the more confident one (0.983 vs 0.906), so confidence and correctness point in opposite directions. FAISS semantic search over the corpus on top.
@@ -48,31 +57,31 @@ I am an M.S. Data Science student at George Washington University (May 2027) who
  
 **[LungGuard](https://github.com/alexbiuckians/LungGuard)** — Clinical decision-support prototype predicting lung cancer risk from 29 patient variables, pairing each prediction with a SHAP waterfall and a counterfactual "What-If" engine so a clinician sees both why and what a patient can change. Threshold tuned on F2 for screening recall, with calibration and fairness auditing — and metrics openly flagged as a synthetic-data methodology demonstration rather than predictive evidence.
 
-## Technical Arsenal
+## 💻 Technical Arsenal
  
 **Languages & Analytics:** Python, SQL, R, SAS, C++, JavaScript
 
 **ML & Data Science:** pandas, NumPy, SciPy, scikit-learn, LightGBM, XGBoost, PyTorch, tidymodels, SHAP, DALEX, causalml, econml, statsmodels, Optuna, SMOTE, LangChain, ChromaDB
 
-**MLOps & Serving:** FastAPI, Pydantic, Docker, MLflow, GitHub Actions (CI), Evidently, pytest, ruff, Render, REST APIs
+**MLOps & Serving:** FastAPI, Pydantic, Docker, MLflow, GitHub Actions (CI), Evidently, pytest, ruff, Render, REST APIs, Microsoft Fabric
 
-**Data & Geospatial:** PostgreSQL, SQLite, GeoPandas, sf, NetworkX, Redpanda/Kafka, River, FAISS, GTFS, Census/ACS
+**Data & Geospatial:** PostgreSQL, SQLite, GeoPandas, sf, NetworkX, Redpanda/Kafka, River, FAISS, GTFS, Census/ACS, PySpark, Delta Lake
 
-**Visualization & Apps:** Streamlit, Shiny, Dash, Plotly, Leaflet, Power BI, Tableau, Matplotlib, seaborn, ggplot2
+**Visualization & Apps:** Streamlit, Shiny, Dash, Plotly, Leaflet, Power BI (DAX, Power Query), Tableau, Matplotlib, seaborn, ggplot2
 
 **Methods:** Quantile Regression, Causal Inference / Uplift Modeling, Spatial Statistics (Moran's I, LISA), Time-Series Forecasting & CV, Anomaly Detection, Sequential Hypothesis Testing (SPRT/CUSUM), A/B Testing, Difference-in-Differences, Operations Research, Retrieval-Augmented Generation
  
 ## 🎓 Education
-**M.S. in Data Science**
-George Washington University — Expected May 2027
-**BA in Sport Management, Minor in Data Analytics & Statistics**,
-High Point University — December 2024
 
+**M.S. in Data Science** — George Washington University, Expected May 2027
+
+**B.A. in Sport Management, Minor in Data Analytics** — High Point University, December 2024
 
 ## 📄 Need the full breakdown?
-[Download My Resume](https://drive.google.com/file/d/1SNlEyyIJ_sdBEJNvHw3hyEQTzllKHuFm/view?usp=sharing)
 
+[Download My Resume](https://alexbiuckians.github.io/AlexBiuckiansPortfolioSite/Alex_Biuckians_Resume.pdf)
 
-## Let's Connect
+## 🔗 Let's Connect
+
 - **Portfolio:** https://alexbiuckians.github.io/AlexBiuckiansPortfolioSite/
 - **LinkedIn:** https://www.linkedin.com/in/alex-biuckians/
