@@ -1,6 +1,6 @@
 # Alex Biuckians | Data Scientist & Machine Learning Portfolio
 
-I am an M.S. Data Science student at George Washington University (May 2027) who builds machine-learning systems end to end on real, messy data — from leakage-safe modeling through deployed, CI-backed services — and defends every result honestly against a baseline, including a production demand forecast built during my fall 2026 internship at RREAF Holdings. My work spans spatial, causal, time-series, operations-research, and anomaly-detection problems, reporting honest skill scores rather than inflated headline numbers.
+I am an M.S. Data Science student at George Washington University (May 2027) who builds machine-learning systems end to end on real, messy data, from leakage-safe modeling through deployed, CI-backed services, and defends every result honestly against a baseline, including a production demand forecast built during my fall 2026 internship at RREAF Holdings. My work spans spatial, causal, time-series, operations-research, and anomaly-detection problems, reporting honest skill scores rather than inflated headline numbers.
 
 **Portfolio site:** https://alexbiuckians.github.io/AlexBiuckiansPortfolioSite/
 
